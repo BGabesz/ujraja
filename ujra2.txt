@@ -1,0 +1,141 @@
+Ha nem adunk meg dátumot, akkor a mai dátum kerül beállításra
+
+public abstract class KiallitasiTargy implements Serializable{
+    private LocalDate letrehozas;
+    private String keszito, cim;
+
+    public KiallitasiTargy(String keszito, String cim) throws HibasDatumException {
+        this(LocalDate.now(), keszito, cim);
+    }
+
+    public KiallitasiTargy(LocalDate letrehozas, String keszito, String cim) throws HibasDatumException {
+        if(letrehozas.isAfter(LocalDate.now())){
+            throw new HibasDatumException("Nem létező dátum");
+        }
+        this.letrehozas = letrehozas;
+        
+        this.keszito = keszito;
+        this.cim = cim;
+    }
+
+
+
+Ha jövőbeli dátumot adunk meg, akkor dobjon saját kivételt, amit a galéria kezeljen!
+uj osztaly
+package modell;
+
+public class HibasDatumException extends Exception{
+
+    public HibasDatumException(String message) {
+        super(message);
+    }
+    
+}
+--------------------------------
+if(letrehozas.isAfter(LocalDate.now())){
+            throw new HibasDatumException("Nem létező dátum");
+        }
+Ha létezik a fájl, akkor a megjelenítő metódus írja ki, hogy „megjelenítés folyamatban…”, ha nem létezik, akkor azt, hogy „nem lehet megjeleníteni!”. 
+private File eleres;
+
+public void megjelenites(){
+        if(eleres.exists()){
+            System.out.println("megjelenítés folyamatban...");
+        }else{
+            System.out.println("nem lehet megjeleníteni");
+        }
+    }
+
+
+iterable nem tudjuk módosítani
+
+public Iterator<KiallitasiTargy> iterator() {
+        return this.targyak.iterator();
+    }
+
+kivetel kezeles hibakezeles
+
+public NevException(String message) {
+        super(message);
+    }
+---------------------------------------------------
+
+---------------------------------------------------
+comparator
+sorbarendezes
+kulon osztaly
+class KeszitoComparator implements Comparator<KiallitasiTargy>{
+    @Override
+    public int compare(KiallitasiTargy o1, KiallitasiTargy o2) {
+        Collator coll = Collator.getInstance();
+        return coll.compare(o1.getKeszito(), o2.getKeszito());
+        
+        //return o1.getKeszito().compareTo(o2.getKeszito());
+    } 
+}get instance ekezet miatt
+
+compare override
+public static KeszitoComparator keszitoRendezo(){
+        return new KeszitoComparator();
+    }
+
+main be 
+public List<KiallitasiTargy> rendezCimSzerint(){
+        Collections.sort(targyak, KiallitasiTargy.cimRendezo());
+        return Collections.unmodifiableList(targyak);
+    }
+
+------------------------------------------
+
+Serializable
+kiirás visszaolvasás mainbe ha az van irva
+nullazas
+mentésre kerül
+beolvasás kiirás
+objectinputstream kasztolas 2 sor
+
+public abstract class KiallitasiTargy implements Serializable{
+
+
+
+try {
+            ObjectOutputStream objKi = new ObjectOutputStream(new FileOutputStream("galeria.bin"));
+            objKi.writeObject(galeria);
+            objKi.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        galeria = null;
+        
+        try {
+            ObjectInputStream objBe = new ObjectInputStream(new FileInputStream("galeria.bin"));
+            galeria = (Galeria)objBe.readObject();
+            
+            objBe.close();
+            
+            System.out.println("Visszaállítás:");
+            for (KiallitasiTargy targy : galeria) {
+                System.out.println(targy);
+            }
+
+----------------------------------------------
+bejaras
+A galéria legyen bejárható, amikor visszaadja tárgyait, nem módosítható (vagy másolat) listában.
+
+for (KiallitasiTargy targy : galeria) {
+            if(targy instanceof Festmeny){
+                ((Festmeny)targy).megjelenites();
+            }
+        
+        }
+System.out.println("Cím szerinti:");
+        for (KiallitasiTargy targy : galeria.rendezCimSzerint()) {
+            System.out.println(targy);
+        }
+----------------------------------------------
+Cloneable
+
+másolás 

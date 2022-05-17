@@ -1,0 +1,38 @@
+GUI
+setText("ertek")->label ertek
+int gomb= joptionpane.showconfirmdialog(megjelenesihelynemfontos,"biztos kilep?",joptionpane.Yes_no_option) ->biztos kilep
+if(gomb==joptionpane.yes_option)->if else biztoskilep mukodes
+System.exit(0) ->kilepes
+
+metodusba rakas
+kijelolszoveg refactor introduce method
+
+piros X kilep
+frame events windowclosing
+
+radio gomb ha megvaltozik
+radigomb events statechange
+
+cim megvaltoztatas
+this.setTitle("valami")
+
+gombra hivatkozas
+jradiobutton rdb (jradiobutton)evt.getsource()
+
+esemeny kulon elnevezes 2 gomb is hasznalhatja
+gomb events setchange ...add rdbinfo
+
+fram code generate center
+
+legordulohoz adas
+select additem()
+
+tabled panel+ panel
+
+fileba
+try{
+String mitirokki="tralalal"
+Files.write(path.get(rendeles.txt),mitirokki.getBytes());
+}catch(ioexecption ex){
+LOgger server.stb
+}
