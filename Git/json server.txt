@@ -1,0 +1,39 @@
+npx json-server --watch szekeny1.json --port 4000
+npx json-server --watch szemelies.json --port 4001
+npx json-server --watch oltozofoglalas.json --port 4002
+npx json-server --watch berlets.json --port 4003
+npx json-server --watch berlet_tipuses.json --port 4004
+
+cd public\json\EdzoJson
+cd resources\views\pages\public\json\EdzoJson
+npx json-server --watch edzoIdopontok.json --port 4005
+
+cd Desktop\VizsgaGit\vizsgaMunka-1
+php --version
+		PHP 8.0.12 (cli) (built: Oct 19 2021 11:21:05) ....
+	composer -V
+		Composer version 2.1.12 2021-11-09 16:02:04
+
+cd Desktop\Edzoterem(v1.0)
+php artisan serve
+cd public 
+cd json
+cd EdzoJson
+npx json-server --watch edzoIdopontok.json --port 4005
+
+cd public 
+cd json
+npx json-server --watch szemelies.json --port 4001
+
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan serve
+
+php artisan optimize
+php artisan migrate
+php artisan db:seed
+php artisan serve
+
+

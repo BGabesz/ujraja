@@ -1,0 +1,3 @@
+ezzel beallithatunk 1 portot
+
+npx json-server --watch oltozofoglalas.json --port 8000

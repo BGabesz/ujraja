@@ -1,0 +1,619 @@
+Adatok felvitele adatbázisba Seeder:
+
+Seederek létrehozása:
+
+Ezzel hozunk létre a seeders mappába új seedereket: (php artisan make:seeder)
+A seedernek a neve: (JogusoltsagSeeder) A tetszőleges, sorrend létrehozáskor nem fontos csak a feltöltésnél
+
+php artisan make:seeder Jogosultasg_Seeder
+php artisan make:seeder Szemely_Seeder
+php artisan make:seeder Ugyfel_edzes_Seeder
+php artisan make:seeder Munkaido_Seeder
+php artisan make:seeder Izomcsoport_Seeder
+php artisan make:seeder Terem_Seeder
+php artisan make:seeder Eszkoz_tipus_Seeder
+php artisan make:seeder Eszkoz_Seeder
+php artisan make:seeder Gyakorlat_Seeder
+php artisan make:seeder Eszkoztar_Seeder
+php artisan make:seeder Edzo_idopont_Seeder
+php artisan make:seeder Szekeny_Seeder
+php artisan make:seeder Oltozofoglalas_Seeder
+php artisan make:seeder Berlet_tipus_Seeder
+php artisan make:seeder Arvaltozas_Seeder
+php artisan make:seeder Berlet_Seeder
+
+
+Az adott táblát adatokkal feltölteni példa:
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class JogusoltsagSeeder extends Seeder
+
+{
+    public function run(){
+        jogosultsags helyére írjuk mindig a tábla nevét-> DB::table('jogosultasgs')->insert([
+	nev helyére írjuk mindig táblának az adattagját,ugyfel dolgozo helyére írjuk az adatbázisba feltölteni kívánt adatot->['nev' => 'ugyfel'],
+	ha több adattag van akkor vessző-vel elválasztva és a megszokott formátumban az adatok['nev' => 'dolgozo','datum' => '2020-10-22'],
+		['nev' => 'edzo'],
+		['nev' => 'admin']
+	]);
+    }
+}
+Táblák feltöltése adatokkal:
+FONTOS A SORREND!!
+
+jogosultsags:
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class JogusoltsagSeeder extends Seeder
+
+{
+    public function run(){
+        DB::table('jogosultasgs')->insert([
+		['nev' => 'ugyfel'],
+		['nev' => 'dolgozo'],
+		['nev' => 'edzo'],
+		['nev' => 'admin']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+szemelies:
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Szemely_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('szemlelies')->insert([
+		    ['jogosultsag_id' => '1','email_cim' => 'felhasznalo111111111111@gmail.com','jelszo' => 'Aa123456','nev' => 'Hecz Kaludia','szul_datum' => '1982-06-03','neme' => 'Nő','igazolvany_szam' => '17593716491','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '3','email_cim' => 'edzo1@gmail.com','jelszo' => 'Bb123456','nev' => 'Szabó Anett','szul_datum' => '2000-01-21','neme' => 'Nő','igazolvany_szam' => '572962SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo2@gmail.com','jelszo' => 'Cc123456','nev' => 'Szántai Barna','szul_datum' => '1982-06-03','neme' => 'Férfi','igazolvany_szam' => '16592711111','igazolvany_tipusa' => 'diak','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '2','email_cim' => 'dolgozo1@gmail.com','jelszo' => 'Dd123456','nev' => 'Bartucz Petra','szul_datum' => '1999-02-14','neme' => 'Nő','igazolvany_szam' => '112233SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '2','email_cim' => 'dolgozo2@gmail.com','jelszo' => 'Ee123456','nev' => 'Balogh Bíborka','szul_datum' => '1928-12-10','neme' => 'Nő','igazolvany_szam' => '365123SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo4@gmail.com','jelszo' => 'Ff123456','nev' => 'Nagy Domonkos','szul_datum' => '1991-02-20','neme' => 'Férfi','igazolvany_szam' => '512333SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo5@gmail.com','jelszo' => 'Gg123456','nev' => 'Joó Edvárd','szul_datum' => '1988-01-01','neme' => 'Férfi','igazolvany_szam' => '223223SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '4','email_cim' => 'admin1@gmail.com','jelszo' => 'Hh123456','nev' => 'Bogdán Gábor','szul_datum' => '1988-01-01','neme' => 'Férfi','igazolvany_szam' => '423432SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo6@gmail.com','jelszo' => 'Ii123456','nev' => 'Simon Gergely','szul_datum' => '1988-01-01','neme' => 'Férfi','igazolvany_szam' => '37333216292','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '4','email_cim' => 'admin2@gmail.com','jelszo' => 'Jj123456','nev' => 'Gutyina András','szul_datum' => '1969-06-09','neme' => 'Férfi','igazolvany_szam' => '111131SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo7@gmail.com','jelszo' => 'Kk123456','nev' => 'Somoskői Gábor','szul_datum' => '1969-06-09','neme' => 'Férfi','igazolvany_szam' => '92562611133','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo8@gmail.com','jelszo' => 'Ll123456','nev' => 'Kelemen Kevin','szul_datum' => '1961-01-19','neme' => 'Férfi','igazolvany_szam' => '166622SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '3','email_cim' => 'edzo2@gmail.com','jelszo' => 'Mm123456','nev' => 'Kiss Niki','szul_datum' => '1991-11-11','neme' => 'Nő','igazolvany_szam' => '653544SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo9@gmail.com','jelszo' => 'Nn123456','nev' => 'Illés Lejla','szul_datum' => '1991-11-11','neme' => 'Nő','igazolvany_szam' => '888444SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo10@gmail.com','jelszo' => 'Oo123456','nev' => 'Helyes Márton','szul_datum' => '1991-11-11','neme' => 'Férfi','igazolvany_szam' => '584354SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '3','email_cim' => 'edzo3@gmail.com','jelszo' => 'Pp123456','nev' => 'Ménesi Csaba','szul_datum' => '1990-10-21','neme' => 'Férfi','igazolvany_szam' => '548375SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '4','email_cim' => 'admin3@gmail.com','jelszo' => 'Qq123456','nev' => 'Szűcs Richárd','szul_datum' => '1960-12-21','neme' => 'Férfi','igazolvany_szam' => '999999SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo11@gmail.com','jelszo' => 'Rr123456','nev' => 'Li Richárd Alex','szul_datum' => '1988-02-01','neme' => 'Férfi','igazolvany_szam' => '99515244133','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo12@gmail.com','jelszo' => 'Ss123456','nev' => 'Bartók Rolad','szul_datum' => '1982-08-11','neme' => 'Férfi','igazolvany_szam' => 'RK12345678','igazolvany_tipusa' => 'rendőr','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo13@gmail.com','jelszo' => 'Tt123456','nev' => 'Szabó Gergő','szul_datum' => '1977-07-21','neme' => 'Férfi','igazolvany_szam' => 'RK87654321','igazolvany_tipusa' => 'rendőr','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo14@gmail.com','jelszo' => 'Uu123456','nev' => 'SZabó Milán','szul_datum' => '1927-11-11','neme' => 'Férfi','igazolvany_szam' => '77123155311','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '2','email_cim' => 'dolgozo3@gmail.com','jelszo' => 'Vv123456','nev' => 'Szikora Melinda','szul_datum' => '1999-02-16','neme' => 'Nő','igazolvany_szam' => '882513SA','igazolvany_tipusa' => 'felnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo15@gmail.com','jelszo' => 'Ww123456','nev' => 'Tellér Ádám','szul_datum' => '1966-07-11','neme' => 'Férfi','igazolvany_szam' => '88712499455','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '3','email_cim' => 'edzo4@gmail.com','jelszo' => 'Xx123456','nev' => 'Tóth Virág','szul_datum' => '1977-11-22','neme' => 'Nő','igazolvany_szam' => '777777SA','igazolvany_tipusa' => 'felnptt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '1','email_cim' => 'felhasznalo16@gmail.com','jelszo' => 'Yy123456','nev' => 'Váradi Ákos','szul_datum' => '1987-12-29','neme' => 'Férfi','igazolvany_szam' => '666666SA','igazolvany_tipusa' => 'félnőtt','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['jogosultsag_id' => '3','email_cim' => 'edzo5@gmail.com','jelszo' => 'Zz123456','nev' => 'Labancz Dániel','szul_datum' => '1972-01-30','neme' => 'Férfi','igazolvany_szam' => '77234851233','igazolvany_tipusa' => 'diák','kep' => 'alap_ert','created_at' =>'NULL','updated_at' =>'NULL']
+        ]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+ugyfel_edzes:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Ugyfel_edzes_Seeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('ugyfel_edzes')->insert([
+                ['edzo' => '3','ugyfel' => '1','datum' => '2022-03-02 00:00:00','ora' => '00:00:08','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '2','ugyfel' => '1','datum' => '2022-03-02 00:00:00','ora' => '00:00:08','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '2','ugyfel' => '3','datum' => '2022-03-02 00:00:00','ora' => '00:00:08','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '2','ugyfel' => '6','datum' => '2022-03-02 00:00:00','ora' => '00:00:09','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '2','ugyfel' => '1','datum' => '2022-03-02 00:00:00','ora' => '00:00:10','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '13','ugyfel' => '3','datum' => '2022-03-03 00:00:00','ora' => '00:00:12','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '13','ugyfel' => '7','datum' => '2022-03-04 00:00:00','ora' => '00:00:14','created_at' =>'NULL','updated_at' =>'NULL'],
+                ['edzo' => '13','ugyfel' => '9','datum' => '2022-03-05 00:00:00','ora' => '00:00:15','created_at' =>'NULL','updated_at' =>'NULL']
+        ]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+munkaidos:
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Munkaido_Seeder extends Seeder
+
+{
+    public function run(){
+        DB::table('munkaidos')->insert([
+            ['dolgozo' => '4','mettol' => '2022-02-02 08:00:00','meddig' => '2022-02-02 16:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '22','mettol' => '2022-02-02 16:00:00','meddig' => '2022-02-02 22:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '22','mettol' => '2022-02-03 08:00:00','meddig' => '2022-02-03 16:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '4','mettol' => '2022-02-02 16:00:00','meddig' => '2022-02-02 22:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '22','mettol' => '2022-02-04 08:00:00','meddig' => '2022-02-04 14:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '4','mettol' => '2022-02-04 14:00:00','meddig' => '2022-02-04 22:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '4','mettol' => '2022-02-05 08:00:00','meddig' => '2022-02-05 14:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['dolgozo' => '22','mettol' => '2022-02-05 14:00:00','meddig' => '2022-02-05 22:00:00','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+izomcsoports:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Izomcsoport_Seeder extends Seeder
+
+{
+    public function run(){
+        DB::table('izomcsoports')->insert([
+            ['izomcsoport_id' => '1','megnevezes' => 'Mellizom','abra' => 'MellKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '2','megnevezes' => 'Tricepsz','abra' => 'TricepszKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '3','megnevezes' => 'Bicepsz','abra' => 'BicepszKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '4','megnevezes' => 'Vádli','abra' => 'VádliKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '5','megnevezes' => 'Combizom','abra' => 'CombKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '6','megnevezes' => 'Hátizom','abra' => 'HátKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '7','megnevezes' => 'Hasizom','abra' => 'HasKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '8','megnevezes' => 'Alkar','abra' => 'AlkarKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '9','megnevezes' => 'Vállizom','abra' => 'VállKép','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['izomcsoport_id' => '10','megnevezes' => 'Törzs','abra' => 'TörzsKép','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+terems:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Terem_Seeder extends Seeder
+
+{
+    public function run(){
+        DB::table('terems')->insert([
+            ['terem_id' => '1','terem_neve' => 'Elso Terem','ferfi_ferohely' => '50','noi_ferohely' => '50','nyitas' => '06:00','zaras' => '22:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','terem_neve' => 'Masodik Terem','ferfi_ferohely' => '50','noi_ferohely' => '50','nyitas' => '06:00','zaras' => '22:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '3','terem_neve' => 'Harmadik Terem','ferfi_ferohely' => '50','noi_ferohely' => '50','nyitas' => '06:00','zaras' => '22:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '4','terem_neve' => 'Negyedik Terem','ferfi_ferohely' => '50','noi_ferohely' => '50','nyitas' => '06:00','zaras' => '22:00','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+eszkoz_tipuses:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Eszkoz_tipus_Seeder extends Seeder
+
+{
+    public function run(){
+        DB::table('eszkoz_tipuses')->insert([
+            ['eszkoz_tipus_szamlalo' => '1','eszkoz_neve' => 'Kézisúlyzó','suly' => '1','kep' => 'Kép1','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '2','eszkoz_neve' => 'Fekvenyomó Pad Vízszintes','suly' => '1','kep' => 'Kép2','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '3','eszkoz_neve' => 'Fekvenyomó Pad Ferde','suly' => '1','kep' => 'Kép3','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '4','eszkoz_neve' => 'Pillangó Mellgép','suly' => '1','kep' => 'Kép4','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '5','eszkoz_neve' => 'Keresztcsiga','suly' => '1','kep' => 'Kép5','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '6','eszkoz_neve' => 'Mellnyomó Gép','suly' => '1','kep' => 'Kép6','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '7','eszkoz_neve' => 'pec-deck Gép','suly' => '1','kep' => 'Kép7','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '8','eszkoz_neve' => 'Smith Keret','suly' => '1','kep' => 'Kép8','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '9','eszkoz_neve' => 'Húzódzkodó Rúd','suly' => '1','kep' => 'Kép9','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '10','eszkoz_neve' => 'Csigás Hátgép','suly' => '1','kep' => 'Kép10','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '11','eszkoz_neve' => 'Evezőgép','suly' => '1','kep' => 'Kép11','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '12','eszkoz_neve' => 'Kábeles Evezőgép','suly' => '1','kep' => 'Kép12','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '13','eszkoz_neve' => 'T-rudas Evezőgép','suly' => '1','kep' => 'Kép13','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '14','eszkoz_neve' => 'Hiperextenzív pad','suly' => '1','kep' => 'Kép14','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '15','eszkoz_neve' => 'Ülő Oldalemelő Gép','suly' => '2','kep' => 'Kép15','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '16','eszkoz_neve' => 'Hátsóváll Gép','suly' => '2','kep' => 'Kép16','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '17','eszkoz_neve' => 'Vállból Nyomó Gép','suly' => '2','kep' => 'Kép17','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '18','eszkoz_neve' => 'Lábtoló Gép','suly' => '2','kep' => 'Kép18','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '19','eszkoz_neve' => 'Lábfeszítő Gép','suly' => '2','kep' => 'Kép19','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '20','eszkoz_neve' => 'Lábhajlító Gép','suly' => '2','kep' => 'Kép20','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '21','eszkoz_neve' => 'Hack Guggoló Gép','suly' => '2','kep' => 'Kép21','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '22','eszkoz_neve' => 'Álló Lábhajlító Gép','suly' => '2','kep' => 'Kép22','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '23','eszkoz_neve' => 'Comb Távolító Gép','suly' => '2','kep' => 'Kép23','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '24','eszkoz_neve' => 'Comb Összenyomó Gép','suly' => '2','kep' => 'Kép24','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '25','eszkoz_neve' => 'Vízszintes Lábtoló Gép','suly' => '2','kep' => 'Kép25','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '26','eszkoz_neve' => 'Csípőemelő Gép','suly' => '2','kep' => 'Kép26','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '27','eszkoz_neve' => 'Bicepsz Rúd','suly' => '2','kep' => 'Kép27','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '28','eszkoz_neve' => 'Franciarúd','suly' => '2','kep' => 'Kép28','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '29','eszkoz_neve' => 'Csigás Bicepszgép','suly' => '2','kep' => 'Kép29','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_tipus_szamlalo' => '30','eszkoz_neve' => 'Scott Pad','suly' => '2','kep' => 'Kép30','leiras' => 'majd ki lesz toltve','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+eszkozs:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Eszkoz_Seeder extends Seeder
+
+{
+    public function run(){
+        DB::table('eszkozs')->insert([
+            ['eszkoz_id' => '1','eszkoz_tipus_szamlalo' => '1','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '2','eszkoz_tipus_szamlalo' => '2','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '3','eszkoz_tipus_szamlalo' => '3','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '4','eszkoz_tipus_szamlalo' => '4','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '5','eszkoz_tipus_szamlalo' => '5','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '6','eszkoz_tipus_szamlalo' => '6','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '7','eszkoz_tipus_szamlalo' => '7','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '8','eszkoz_tipus_szamlalo' => '8','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '9','eszkoz_tipus_szamlalo' => '9','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '10','eszkoz_tipus_szamlalo' => '10','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '11','eszkoz_tipus_szamlalo' => '11','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '12','eszkoz_tipus_szamlalo' => '12','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '13','eszkoz_tipus_szamlalo' => '13','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '14','eszkoz_tipus_szamlalo' => '14','terem_id' => '1','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '15','eszkoz_tipus_szamlalo' => '15','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '16','eszkoz_tipus_szamlalo' => '16','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '17','eszkoz_tipus_szamlalo' => '17','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '18','eszkoz_tipus_szamlalo' => '18','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '19','eszkoz_tipus_szamlalo' => '19','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '20','eszkoz_tipus_szamlalo' => '20','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '21','eszkoz_tipus_szamlalo' => '21','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '22','eszkoz_tipus_szamlalo' => '22','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '23','eszkoz_tipus_szamlalo' => '23','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '24','eszkoz_tipus_szamlalo' => '24','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '25','eszkoz_tipus_szamlalo' => '25','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '26','eszkoz_tipus_szamlalo' => '26','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '27','eszkoz_tipus_szamlalo' => '27','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '28','eszkoz_tipus_szamlalo' => '28','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '29','eszkoz_tipus_szamlalo' => '29','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['eszkoz_id' => '30','eszkoz_tipus_szamlalo' => '30','terem_id' => '2','qr_kod' => 'Null','eszkoz_neve' => '','suly' => '0','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+gyakorlats:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Gyakorlat_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('gyakorlats')->insert([
+            [`eszkoz_tipus_szamlalo`=>1,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz ülve egykezes súlyzókkal',`video`=>'BicepszUlveEgykezesSulyzokkalVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            [`eszkoz_tipus_szamlalo`=>48,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz ülve egykezes súlyzókkal',`video`=>'BicepszUlveEgykezesSulyzokkalVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            
+            [`eszkoz_tipus_szamlalo`=>1,`izomcsoport_id`=>3,`megnevezes`=>'Koncentrált bicepsz',`video`=>'KoncentraltBicepszVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            [`eszkoz_tipus_szamlalo`=>48,`izomcsoport_id`=>3,`megnevezes`=>'Koncentrált bicepsz',`video`=>'KoncentraltBicepszVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            
+            [`eszkoz_tipus_szamlalo`=>1,`izomcsoport_id`=>3,`megnevezes`=>'Kalapács bicepsz',`video`=>'KarhajliatasNyujtasVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>2,NULL,NULL],
+            
+            [`eszkoz_tipus_szamlalo`=>1,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz ülve ferdepadon egykezes súlyzókkal',`video`=>'BicepszUlveFerdepadonVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            [`eszkoz_tipus_szamlalo`=>48,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz ülve ferdepadon egykezes súlyzókkal',`video`=>'BicepszUlveFerdepadonVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            
+            [`eszkoz_tipus_szamlalo`=>1,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz állva váltott karral',`video`=>'BicepszAllvaValtottKarralVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>3,NULL,NULL],
+            
+            [`eszkoz_tipus_szamlalo`=>27,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz állva kétkezes rúddal',`video`=>'BicepszAllvaKetkezesRuddalVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            
+            
+            [`eszkoz_tipus_szamlalo`=>3,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz állva francia rúddal ',`video`=>'BicepszAllvaFranciaRuddalVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>2,NULL,NULL],
+            [`eszkoz_tipus_szamlalo`=>30,`izomcsoport_id`=>3,`megnevezes`=>'Bicepsz Scott-padon ',`video`=>'BicepszScottPadonVideo',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL],
+            
+            [`eszkoz_tipus_szamlalo`=>29,`izomcsoport_id`=>3,`megnevezes`=>'Kábeles kétkezes bicepszezés ülve ',`video`=>'KábelesKétkezesBicepszezesUlveVido',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>3,NULL,NULL],
+            [`eszkoz_tipus_szamlalo`=>37,`izomcsoport_id`=>3,`megnevezes`=>'Kábeles kétkezes bicepszezés állva csigával',`video`=>'KábelesKétkezesBicepszezesAllvaVido',`leiras`=>'Leiaras Karhajlitas nyujtas...',`szint`=>1,NULL,NULL]
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+eszkoztars:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Eszkoztar_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('eszkoztars')->insert([
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '1','dbszam' => '20','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '3','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '4','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '5','dbszam' => '4','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '6','dbszam' => '1','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '7','dbszam' => '3','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '9','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '10','dbszam' => '4','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '11','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '1','eszkoz_tipus_szamlalo' => '14','dbszam' => '1','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '2','dbszam' => '15','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '7','dbszam' => '3','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '8','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '10','dbszam' => '1','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '12','dbszam' => '4','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '13','dbszam' => '4','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '15','dbszam' => '5','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '16','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '17','dbszam' => '2','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['terem_id' => '2','eszkoz_tipus_szamlalo' => '20','dbszam' => '1','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+edzo_idoponts:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Edzo_idopont_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('edzo_idoponts')->insert([
+            ['ugyfel' => '1','terem_id' => '1','belepes_datum_ido' => '2021-01-01 14:00:00','kilepes_datum_ido' => '2021-01-01 15:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '3','terem_id' => '2','belepes_datum_ido' => '2021-01-02 10:00:00','kilepes_datum_ido' => '2021-01-02 12:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '6','terem_id' => '1','belepes_datum_ido' => '2021-01-02 11:00:00','kilepes_datum_ido' => '2021-01-02 12:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '7','terem_id' => '1','belepes_datum_ido' => '2021-01-03 08:00:00','kilepes_datum_ido' => '2021-01-03 09:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '9','terem_id' => '1','belepes_datum_ido' => '2021-01-03 16:00:00','kilepes_datum_ido' => '2021-01-03 17:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '11','terem_id' => '2','belepes_datum_ido' => '2021-01-07 08:00:00','kilepes_datum_ido' => '2021-01-07 10:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '12','terem_id' => '1','belepes_datum_ido' => '2021-01-07 08:00:00','kilepes_datum_ido' => '2021-01-07 11:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '14','terem_id' => '2','belepes_datum_ido' => '2021-01-07 09:00:00','kilepes_datum_ido' => '2021-01-07 10:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '15','terem_id' => '2','belepes_datum_ido' => '2021-01-10 14:00:00','kilepes_datum_ido' => '2021-01-10 15:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['ugyfel' => '18','terem_id' => '2','belepes_datum_ido' => '2021-01-12 10:00:00','kilepes_datum_ido' => '2021-01-12 11:00:00','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+szekenies:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Szekeny_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('szekenies')->insert([
+            ['szekreny_id' => '1','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '2','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '3','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '4','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '5','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '6','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '7','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '8','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '9','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '10','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '11','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '12','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '13','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '14','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '15','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '16','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '17','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '18','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '19','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '20','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '21','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '22','ures_e' => 'F','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '23','ures_e' => 'R','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '24','ures_e' => 'R','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '25','ures_e' => 'R','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '26','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '27','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '28','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '29','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '30','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '31','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '32','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '33','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '34','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '35','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '36','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '37','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '38','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '39','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '40','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '41','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '42','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '43','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '44','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '45','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '46','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '47','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '48','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '49','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '50','ures_e' => 'Ü','tipusa' => 'Férfi','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '51','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '52','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '53','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '54','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '55','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '56','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '57','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '58','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '59','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '60','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '61','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '62','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '63','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '64','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '65','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '66','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '67','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '68','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '69','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '70','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '71','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '72','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '73','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '74','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '75','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '76','ures_e' => 'Ü','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '77','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '78','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '79','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '80','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '81','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '82','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '83','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '84','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '85','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '86','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '87','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '88','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '89','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '90','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '91','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '92','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '93','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '94','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '95','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '96','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '97','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '98','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['szekreny_id' => '99','ures_e' => 'F','tipusa' => 'NŐ','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+oltozofoglalas:
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Oltozofoglalas_Seeder extends Seeder
+
+{
+    public function run(){
+        DB::table('oltozofoglalas')->insert([
+            ['oltozofog_id' => '1','szekreny_id' => '2','ugyfel' => '1','datum' => '2021-01-01 14:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['oltozofog_id' => '2','szekreny_id' => '7','ugyfel' => '3','datum' => '2021-01-01 10:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['oltozofog_id' => '3','szekreny_id' => '12','ugyfel' => '14','datum' => '2021-01-07 09:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['oltozofog_id' => '4','szekreny_id' => '13','ugyfel' => '23','datum' => '2021-01-02 11:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['oltozofog_id' => '5','szekreny_id' => '14','ugyfel' => '25','datum' => '2021-01-02 13:00:00','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+berlet_tipuses:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Berlet_tipus_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('berlet_tipuses')->insert([
+            ['berlet_tipus_id' => '1','megnevezes' => 'diak','idotartam_nap' => '30','ár' => '3000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '2','megnevezes' => 'teljes áru','idotartam_nap' => '30','ár' => '3000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '3','megnevezes' => 'rendor','idotartam_nap' => '30','ár' => '2900','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '4','megnevezes' => 'diak éves','idotartam_nap' => '365','ár' => '30000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '5','megnevezes' => 'rendor éves','idotartam_nap' => '365','ár' => '29000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '6','megnevezes' => 'teljes áru éves','idotartam_nap' => '365','ár' => '35000','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+arvaltozas:
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Arvaltozas_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('arvaltozas')->insert([
+            ['berlet_tipus_id' => '1','megnevezes' => 'diak','idotartam_nap' => '30','ár' => '3000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '2','megnevezes' => 'teljes áru','idotartam_nap' => '30','ár' => '3000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '3','megnevezes' => 'rendor','idotartam_nap' => '30','ár' => '2900','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '4','megnevezes' => 'diak éves','idotartam_nap' => '365','ár' => '30000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '5','megnevezes' => 'rendor éves','idotartam_nap' => '365','ár' => '29000','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '6','megnevezes' => 'teljes áru éves','idotartam_nap' => '365','ár' => '35000','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+Ahol van a fájlunk cmd...php artisan db:seed
+
+berlets:
+
+<?php
+
+namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
+class Berlet_Seeder extends Seeder
+{
+    public function run(){
+        DB::table('berlets')->insert([
+            ['berlet_tipus_id' => '1','ugyfel' => '1','datum_tol' => '2021-01-01 08:00:00','datum_ig' => '2021-01-31 08:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '1','ugyfel' => '3','datum_tol' => '2021-02-01 08:00:00','datum_ig' => '2021-03-02 08:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '2','ugyfel' => '6','datum_tol' => '2021-01-01 08:00:00','datum_ig' => '2021-01-31 08:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '2','ugyfel' => '7','datum_tol' => '2021-04-15 08:00:00','datum_ig' => '2021-05-16 08:00:00','created_at' =>'NULL','updated_at' =>'NULL'],
+            ['berlet_tipus_id' => '1','ugyfel' => '9','datum_tol' => '2021-04-01 08:00:00','datum_ig' => '2021-05-01 08:00:00','created_at' =>'NULL','updated_at' =>'NULL']
+	]);
+    }
+}
+
+Ahol van a fájlunk cmd...php artisan db:seed

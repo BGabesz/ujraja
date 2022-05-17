@@ -1,0 +1,29 @@
+0. #Bejelentkezés
+
+git config --global user.email "bogdan.gabesz@gmail.com"
+git config --global user.name "BGabesz"
+
+1. #Keresd meg a mappát, ahol a projekted van! --> Git bash here...
+
+echo "# Bogdán Gábor" >> README.md
+git init
+git add .
+git commit -m "Kiinduló projekt"
+git branch -M main
+git remote add origin https://github.com/BGabesz/gitgyak.git
+git push -u origin main
+
+3. #További változások esetén
+ 
+git add .
+git commit -m "gui"
+git push
+
+
+beallítások->legörget alul
+ra->github oldalak->linkre rákattintani->és mögé beírni hogy public_html
+
+
+//osztaly implements Serializable örökli a Serializable osztályt ami lehetővé teszi hogy minden eszköz egyedi legyen
+    //alt+insert->equals() and hashCode()
+

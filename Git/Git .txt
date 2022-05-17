@@ -1,0 +1,44 @@
+Sokan küzdöttetek a GIT használatával, bátorkodtam készíteni egy útmutatót!
+ 
+0. #Bejelentkezés
+
+git config --global user.email "bogdan.gabesz@gmail.com"
+git config --global user.name "BGabesz"
+
+0.1 #Keresd meg a mappát, ahol a projekted van! --> Git bash here...
+
+git init
+git add . 
+
+git commit -m "Kiinduló projekt"
+ 
+1. #Létrehozol egy új repozitorit a GITHUB-on
+ 
+2. #Másold be a következő kódot!
+(github oldaláról kimásolható a repozitory alatt)
+_____________________________________________________
+ 
+git remote add origin (https://github.com/kelekevin23/Csoportmunka_Versek.git)
+git branch -M main
+git push -u origin main
+_____________________________________________________
+ 
+3. #További változások esetén
+ 
+git add .
+git commit -m "3.oldal+4.olda,1dbcss"
+git push
+
+
+beallítások->legörget alul
+ra->github oldalak->linkre rákattintani->és mögé beírni hogy public_html
+
+
+
+git init
+git add . 
+git add README.md
+git commit -m "Kiinduló projekt"
+git branch -M main
+git remote add origin https://github.com/BGabesz/proba2.git
+git push -u origin main

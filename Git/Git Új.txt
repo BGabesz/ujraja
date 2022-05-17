@@ -1,0 +1,103 @@
+-Your repositories
+-new
+-elnevezni a repositoryt
+-Create repository
+-uploading an existing file
+-behúzni a fileokat
+-commitot elnevezni
+-commit changes
+-beallítások->legörget alulra->github oldalak->
+->linkre rákattintani->és mögé beírni hogy public_html
+Source nál kiváasztani a maint
+-save
+https://bgabesz.github.io/ReceptKonyv/public_html
+https://bgabesz.github.io/(repository neve)
+https://bgabesz.github.io/ReceptKonyv/(azt a mappa 
+nevet irjuk be aholvan a html oldalunk)
+
+0. #Keresd meg a mappát, ahol a projekted van! --> Git bash here...
+ 
+git init
+git add . 
+
+git commit -m "Kiinduló projekt"
+ 
+1. #Létrehozol egy új repozitorit a GITHUB-on
+ 
+2. #Másold be a következő kódot!
+(github oldaláról kimásolható a repozitory alatt)
+_____________________________________________________
+ 
+git remote add origin (https://github.com/kelekevin23/Csoportmunka_Versek.git)
+git branch -M main
+git push -u origin main
+_____________________________________________________
+ 
+3. #További változások esetén
+ 
+git add .
+git commit -m "3.oldal+4.olda,1dbcss"
+git push
+
+
+beallítások->legörget alulra->github oldalak->linkre rákattintani->és mögé beírni hogy public_html
+
+https://bgabesz.github.io/2021_04_20Urlap/public_html/
+
+Ctrl shift + szétnyit mindent
+Ctrl shift - összecsuk mindent
+Ctrl shift c sor kommentezése / kikomentezése
+al + tab array list 
+sout - System.out.println();
+serr - System.err.println();
+al - import java.util.List; List<String> list = new ArrayList<String>();
+Ps - public static
+Pm - public void method() { }
+sb - StringBuilder stringBuilder = new StringBuilder();
+re - return
+pr - private
+pu - public
+pe - protected
+wh - while (true) { }
+for - for (int j = 0; j < 10; j++) { }
+forc - for (Iterator it = col.iterator(); it.hasNext();) { Object object = it.next(); }
+do { } while (true);
+if - if (true) { }
+ife - if (true) { } else { }
+fl - float
+db - double
+St - String
+Ob - Object
+Ex - Exception
+cl - class
+ir - import
+n - Object object = new Object();
+m - private static final void method() { }
+newo - Object object = new Object();
+npe - throw new NullPointerException(„args”);
+ll - List<String> list = new LinkedList<String>();
+2l - List<String> list = Arrays.asList(args);
+2al - List<String> list = new ArrayList<String>( Arrays.asList(args));
+ctrl + g adott sorhoz navigálás
+ctrl + r osszes valtozo atnevezese
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
